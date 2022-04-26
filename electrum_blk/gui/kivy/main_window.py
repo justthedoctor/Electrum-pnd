@@ -1020,8 +1020,8 @@ class ElectrumWindow(App, Logger):
                 from plyer import notification
             icon = (os.path.dirname(os.path.realpath(__file__))
                     + '/../../' + self.icon)
-            notification.notify('Electrum-BLK', message,
-                            app_icon=icon, app_name='Electrum-BLK')
+            notification.notify('Electrum-PND', message,
+                            app_icon=icon, app_name='Electrum-PND')
         except ImportError:
             self.logger.Error('Notification: needs plyer; `sudo python3 -m pip install plyer`')
 

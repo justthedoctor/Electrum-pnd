@@ -38,7 +38,7 @@ def _(x: str) -> str:
     if x == "":
         return ""  # empty string must not be translated. see #7158
     global language
-    dic = [('BTC', 'BLK'), ('Bitcoin', 'Blackcoin'), ('bitcoin', 'blackcoin')]
+    dic = [('BTC', 'PND'), ('Bitcoin', 'Pandacoin'), ('bitcoin', 'pandacoin')]
     for b, l in dic:
         x = x.replace(l, b)
     t = language.gettext(x)

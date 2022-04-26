@@ -5,7 +5,7 @@ set -e
 # Parameterize
 PYTHON_VERSION=3.9.12
 BUILDDIR=/tmp/electrum-blk-build
-PACKAGE=Electrum-BLK
+PACKAGE=Electrum-PND
 GIT_REPO=https://github.com/CoinBlack/electrum-blk
 
 export GCC_STRIP_BINARIES="1"

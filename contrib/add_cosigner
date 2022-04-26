@@ -34,14 +34,14 @@ cosigner = sys.argv[1]
 version = version_win = version_mac = version_android = ELECTRUM_VERSION
 
 files = {
-    'tgz': "Electrum-BLK-%s.tar.gz" % version,
+    'tgz': "Electrum-PND-%s.tar.gz" % version,
     'appimage': "electrum-blk-%s-x86_64.AppImage" % version,
     'mac': "electrum-blk-%s.dmg" % version_mac,
     'win': "electrum-blk-%s.exe" % version_win,
     'win_setup': "electrum-blk-%s-setup.exe" % version_win,
     'win_portable': "electrum-blk-%s-portable.exe" % version_win,
-    'apk_arm64': "Electrum-BLK-%s-arm64-v8a-release.apk" % APK_VERSION,
-    'apk_armeabi': "Electrum-BLK-%s-armeabi-v7a-release.apk" % APK_VERSION,
+    'apk_arm64': "Electrum-PND-%s-arm64-v8a-release.apk" % APK_VERSION,
+    'apk_armeabi': "Electrum-PND-%s-armeabi-v7a-release.apk" % APK_VERSION,
 }
 
 

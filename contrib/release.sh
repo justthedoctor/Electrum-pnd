@@ -81,7 +81,7 @@ fi
 set -x
 
 # create tarball
-tarball="Electrum-BLK-$VERSION.tar.gz"
+tarball="Electrum-PND-$VERSION.tar.gz"
 if test -f "dist/$tarball"; then
     info "file exists: $tarball"
 else
@@ -117,10 +117,10 @@ else
 fi
 
 # android
-apk1="Electrum-BLK-$VERSION.0-armeabi-v7a-release.apk"
-apk1_unsigned="Electrum-BLK-$VERSION.0-armeabi-v7a-release-unsigned.apk"
-apk2="Electrum-BLK-$VERSION.0-arm64-v8a-release.apk"
-apk2_unsigned="Electrum-BLK-$VERSION.0-arm64-v8a-release-unsigned.apk"
+apk1="Electrum-PND-$VERSION.0-armeabi-v7a-release.apk"
+apk1_unsigned="Electrum-PND-$VERSION.0-armeabi-v7a-release-unsigned.apk"
+apk2="Electrum-PND-$VERSION.0-arm64-v8a-release.apk"
+apk2_unsigned="Electrum-PND-$VERSION.0-arm64-v8a-release-unsigned.apk"
 if test -f "dist/$apk1"; then
     info "file exists: $apk1"
 else

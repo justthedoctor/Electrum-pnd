@@ -150,7 +150,7 @@ class ElectrumGui(BaseElectrumGui, Logger):
 
     def _init_tray(self):
         self.tray = QSystemTrayIcon(self.tray_icon(), None)
-        self.tray.setToolTip('Electrum-BLK')
+        self.tray.setToolTip('Electrum-PND')
         self.tray.activated.connect(self.tray_activated)
         self.build_tray_menu()
         self.tray.show()
@@ -205,7 +205,7 @@ class ElectrumGui(BaseElectrumGui, Logger):
             submenu.addAction(_("Close"), window.close)
         m.addAction(_("Dark/Light"), self.toggle_tray_icon)
         m.addSeparator()
-        m.addAction(_("Exit Electrum-BLK"), self.app.quit)
+        m.addAction(_("Exit Electrum-PND"), self.app.quit)
 
     def tray_icon(self):
         if self.dark_icon:

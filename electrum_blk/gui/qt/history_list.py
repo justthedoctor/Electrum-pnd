@@ -589,11 +589,11 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
         grid.addWidget(QLabel(self.format_date(start_date)), 1, 1)
         grid.addWidget(QLabel(self.format_date(end_date)), 1, 2)
         #
-        grid.addWidget(QLabel(_("BLK balance")), 2, 0)
+        grid.addWidget(QLabel(_("PND balance")), 2, 0)
         grid.addWidget(QLabel(format_amount(start['BLK_balance'])), 2, 1)
         grid.addWidget(QLabel(format_amount(end['BLK_balance'])), 2, 2)
         #
-        grid.addWidget(QLabel(_("BLK Fiat price")), 3, 0)
+        grid.addWidget(QLabel(_("PND Fiat price")), 3, 0)
         grid.addWidget(QLabel(format_fiat(start.get('BLK_fiat_price'))), 3, 1)
         grid.addWidget(QLabel(format_fiat(end.get('BLK_fiat_price'))), 3, 2)
         #
@@ -610,11 +610,11 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
         grid.addWidget(QLabel(format_fiat(end.get('unrealized_gains', ''))), 6, 2)
         #
         grid2 = QGridLayout()
-        grid2.addWidget(QLabel(_("BLK incoming")), 0, 0)
+        grid2.addWidget(QLabel(_("PND incoming")), 0, 0)
         grid2.addWidget(QLabel(format_amount(flow['BLK_incoming'])), 0, 1)
         grid2.addWidget(QLabel(_("Fiat incoming")), 1, 0)
         grid2.addWidget(QLabel(format_fiat(flow.get('fiat_incoming'))), 1, 1)
-        grid2.addWidget(QLabel(_("BLK outgoing")), 2, 0)
+        grid2.addWidget(QLabel(_("PND outgoing")), 2, 0)
         grid2.addWidget(QLabel(format_amount(flow['BLK_outgoing'])), 2, 1)
         grid2.addWidget(QLabel(_("Fiat outgoing")), 3, 0)
         grid2.addWidget(QLabel(format_fiat(flow.get('fiat_outgoing'))), 3, 1)
@@ -805,7 +805,7 @@ class HistoryList(MyTreeView, AcceptFileDragDrop):
         try:
             self.do_export_history(filename, csv_button.isChecked())
         except (IOError, os.error) as reason:
-            export_error_label = _("Electrum-BLK was unable to produce a transaction export.")
+            export_error_label = _("Electrum-PND was unable to produce a transaction export.")
             self.parent.show_critical(export_error_label + "\n" + str(reason), title=_("Unable to export history"))
             return
         self.parent.show_message(_("Your wallet history has been successfully exported."))

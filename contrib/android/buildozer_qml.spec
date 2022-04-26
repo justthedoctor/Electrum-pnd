@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = Electrum-BLK
+title = Electrum-PND
 
 # (str) Package name
 package.name = Electrum_BLK

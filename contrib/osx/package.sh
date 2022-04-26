@@ -24,7 +24,7 @@ export PATH=$PATH:~/bin
 
 
 if [ -z "$1" ]; then
-    echo "Usage: $0 Electrum-BLK.app"
+    echo "Usage: $0 Electrum-PND.app"
     exit -127
 fi
 
@@ -80,16 +80,16 @@ ${genisoimage} \
     -D \
     -l \
     -probe \
-    -V "Electrum-BLK" \
+    -V "Electrum-PND" \
     -no-pad \
     -r \
     -dir-mode 0755 \
     -apple \
-    -o Electrum-BLK_uncompressed.dmg \
+    -o Electrum-PND_uncompressed.dmg \
     /tmp/electrum-blk-macos/image || fail "Unable to create uncompressed dmg"
 
-dmg dmg Electrum-BLK_uncompressed.dmg electrum-blk-$VERSION.dmg || fail "Unable to create compressed dmg"
-rm Electrum-BLK_uncompressed.dmg
+dmg dmg Electrum-PND_uncompressed.dmg electrum-blk-$VERSION.dmg || fail "Unable to create compressed dmg"
+rm Electrum-PND_uncompressed.dmg
 
 echo "Done."
 sha256sum electrum-blk-$VERSION.dmg

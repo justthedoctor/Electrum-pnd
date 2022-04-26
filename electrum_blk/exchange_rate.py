@@ -172,7 +172,7 @@ class BitcoinVenezuela(ExchangeBase):
     async def get_rates(self, ccy):
         json = await self.get_json('api.bitcoinvenezuela.com', '/')
         rates = [(r, json['BTC'][r]) for r in json['BTC']
-                 if json['BTC'][r] is not None]  # Giving NULL for BLK
+                 if json['BTC'][r] is not None]  # Giving NULL for PND
         return dict(rates)
 
     def history_ccys(self):
@@ -249,7 +249,7 @@ class Coinbase(ExchangeBase):
 
     async def get_rates(self, ccy):
         json = await self.get_json('api.coinbase.com',
-                             '/v2/exchange-rates?currency=BLK')
+                             '/v2/exchange-rates?currency=PND')
         return {ccy: Decimal(rate) for (ccy, rate) in json["data"]["rates"].items()}
 
 """

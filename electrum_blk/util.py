@@ -82,11 +82,11 @@ def all_subclasses(cls) -> Set:
 ca_path = certifi.where()
 
 
-base_units = {'BLK':8, 'mBLK':5, 'μBLK':2, 'sat':0}
+base_units = {'PND':8, 'mBLK':5, 'μPND':2, 'sat':0}
 base_units_inverse = inv_dict(base_units)
-base_units_list = ['BLK', 'mBLK', 'μBLK', 'sat']  # list(dict) does not guarantee order
+base_units_list = ['PND', 'mBLK', 'μPND', 'sat']  # list(dict) does not guarantee order
 
-DECIMAL_POINT_DEFAULT = 8  # BLK
+DECIMAL_POINT_DEFAULT = 8  # PND
 
 
 class UnknownBaseUnit(Exception): pass
@@ -582,9 +582,9 @@ def user_dir():
     elif os.name == 'posix':
         return os.path.join(os.environ["HOME"], ".electrum-blk")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-BLK")
+        return os.path.join(os.environ["APPDATA"], "Electrum-PND")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-BLK")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-PND")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
@@ -931,7 +931,7 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
             else:
                 amount = Decimal(am) * COIN
             if amount > TOTAL_COIN_SUPPLY_LIMIT_IN_BTC * COIN:
-                raise InvalidBitcoinURI(f"amount is out-of-bounds: {amount!r} BLK")
+                raise InvalidBitcoinURI(f"amount is out-of-bounds: {amount!r} PND")
             out['amount'] = int(amount)
         except Exception as e:
             raise InvalidBitcoinURI(f"failed to parse 'amount' field: {repr(e)}") from e

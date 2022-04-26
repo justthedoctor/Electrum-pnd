@@ -196,7 +196,7 @@ class BitBox02Client(HardwareClientBase):
     def coin_network_from_electrum_network(self) -> int:
         if constants.net.TESTNET:
             return bitbox02.btc.TBLK
-        return bitbox02.btc.BLK
+        return bitbox02.btc.PND
 
     @runs_in_hwd_thread
     def get_password_for_storage_encryption(self) -> str:
@@ -227,17 +227,17 @@ class BitBox02Client(HardwareClientBase):
             else:
                 out_type = bitbox02.btc.BTCPubRequest.VPUB
         elif xtype == "p2wpkh-p2sh":
-            if coin_network == bitbox02.btc.BLK:
+            if coin_network == bitbox02.btc.PND:
                 out_type = bitbox02.btc.BTCPubRequest.YPUB
             else:
                 out_type = bitbox02.btc.BTCPubRequest.UPUB
         elif xtype == "p2wsh-p2sh":
-            if coin_network == bitbox02.btc.BLK:
+            if coin_network == bitbox02.btc.PND:
                 out_type = bitbox02.btc.BTCPubRequest.CAPITAL_YPUB
             else:
                 out_type = bitbox02.btc.BTCPubRequest.CAPITAL_UPUB
         elif xtype == "p2wsh":
-            if coin_network == bitbox02.btc.BLK:
+            if coin_network == bitbox02.btc.PND:
                 out_type = bitbox02.btc.BTCPubRequest.CAPITAL_ZPUB
             else:
                 out_type = bitbox02.btc.BTCPubRequest.CAPITAL_VPUB
@@ -374,7 +374,7 @@ class BitBox02Client(HardwareClientBase):
         )
 
     def _get_coin(self):
-        return bitbox02.btc.TBLK if constants.net.TESTNET else bitbox02.btc.BLK
+        return bitbox02.btc.TBLK if constants.net.TESTNET else bitbox02.btc.PND
 
     @runs_in_hwd_thread
     def sign_transaction(

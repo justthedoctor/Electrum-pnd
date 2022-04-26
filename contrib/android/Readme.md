@@ -60,7 +60,7 @@ You probably need to clear the cache: `rm -rf .buildozer/android/platform/build-
 ### How do I deploy on connected phone for quick testing?
 Assuming `adb` is installed:
 ```
-$ adb -d install -r dist/Electrum-BLK-*-arm64-v8a-debug.apk
+$ adb -d install -r dist/Electrum-PND-*-arm64-v8a-debug.apk
 $ adb shell monkey -p org.electrum_blk.electrum_blk 1
 ```
 

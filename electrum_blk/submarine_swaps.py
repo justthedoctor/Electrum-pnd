@@ -262,7 +262,7 @@ class SwapManager(Logger):
             password,
             tx: PartialTransaction = None,
     ) -> str:
-        """send on-chain BLK, receive on Lightning
+        """send on-chain PND, receive on Lightning
 
         - User generates an LN invoice with RHASH, and knows preimage.
         - User creates on-chain output locked to RHASH.
@@ -282,7 +282,7 @@ class SwapManager(Logger):
         preimage = self.lnworker.get_preimage(payment_hash)
         request_data = {
             "type": "submarine",
-            "pairId": "BLK/BLK",
+            "pairId": "PND/PND",
             "orderSide": "sell",
             "invoice": invoice,
             "refundPublicKey": pubkey.hex()
@@ -374,7 +374,7 @@ class SwapManager(Logger):
         preimage_hash = sha256(preimage)
         request_data = {
             "type": "reversesubmarine",
-            "pairId": "BLK/BLK",
+            "pairId": "PND/PND",
             "orderSide": "buy",
             "invoiceAmount": lightning_amount_sat,
             "preimageHash": preimage_hash.hex(),
@@ -468,11 +468,11 @@ class SwapManager(Logger):
             self.api_url + '/getpairs',
             timeout=30)
         pairs = json.loads(response)
-        fees = pairs['pairs']['BLK/BLK']['fees']
+        fees = pairs['pairs']['PND/PND']['fees']
         self.percentage = fees['percentage']
         self.normal_fee = fees['minerFees']['baseAsset']['normal']
         self.lockup_fee = fees['minerFees']['baseAsset']['reverse']['lockup']
-        limits = pairs['pairs']['BLK/BLK']['limits']
+        limits = pairs['pairs']['PND/PND']['limits']
         self.min_amount = limits['minimal']
         self._max_amount = limits['maximal']
 

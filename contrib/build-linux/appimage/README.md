@@ -1,4 +1,4 @@
-AppImage binary for Electrum-BLK
+AppImage binary for Electrum-PND
 ================================
 
 ✓ _This binary should be reproducible, meaning you should be able to generate
