@@ -108,7 +108,7 @@ def read_blockchains(config: 'SimpleConfig'):
                             forkpoint_hash=constants.net.GENESIS,
                             prev_hash=None)
     blockchains[constants.net.GENESIS] = best_chain
-    # // Blackcoin ToDo: remove or not!
+    # // Pandacoin ToDo: remove or not!
     # consistency checks
     # if best_chain.height() > constants.net.max_checkpoint():
     #     header_after_cp = best_chain.read_header(constants.net.max_checkpoint()+1)
@@ -303,7 +303,7 @@ class Blockchain(Logger):
         p = self.path()
         self._size = os.path.getsize(p)//HEADER_SIZE if os.path.exists(p) else 0
 
-    # Blackcoin
+    # Pandacoin
     @classmethod
     def ispos(cls, header: dict):
         # We will assume that blocks that come after LAST_POW_BLOCK are PoS
@@ -320,7 +320,7 @@ class Blockchain(Logger):
         if constants.net.TESTNET:
             return
 
-        # Blackcoin
+        # Pandacoin
         if cls.ispos(header):
             # Do not check proof-of-stake headers
             pass
@@ -541,7 +541,7 @@ class Blockchain(Logger):
                 raise MissingHeader(height)
             return hash_header(header)
 
-    # Blackcoin
+    # Pandacoin
     @classmethod
     def get_limit(cls, height: int, net, ispos: bool):
         if ispos:
@@ -552,7 +552,7 @@ class Blockchain(Logger):
         else:
             return net.POW_LIMIT
 
-    # Blackcoin
+    # Pandacoin
     def get_target(self, height: int, ispos: bool, prev=None, pprev=None) -> int:
         net = constants.net
 
@@ -627,7 +627,7 @@ class Blockchain(Logger):
             bitsBase >>= 8
         return bitsN << 24 | bitsBase
 
-    # Blackcoin
+    # Pandacoin
     @with_lock
     def get_chainwork(self, height=None) -> int:
         if height is None:
@@ -662,7 +662,7 @@ class Blockchain(Logger):
         assert idx >= 0, idx
         try:
             data = bfh(hexdata)
-            # Blackcoin: assume that all chunks before the last chekpoint are valid
+            # Pandacoin: assume that all chunks before the last chekpoint are valid
             if ((idx + 1) * CHUNK_SIZE) >= constants.net.max_checkpoint():
                 self.verify_chunk(idx, data)
             self.save_chunk(idx, data)

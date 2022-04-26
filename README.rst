@@ -1,4 +1,4 @@
-Electrum-PND - Lightweight Blackcoin client
+Electrum-PND - Lightweight Pandacoin client
 =====================================
 
 ::
@@ -7,7 +7,7 @@ Electrum-PND - Lightweight Blackcoin client
   Original Author: Thomas Voegtlin
   PND Port Maintainer: lateminer
   Language: Python (>= 3.8)
-  Homepage: https://blackcoin.org/
+  Homepage: https://pandacoin.org/
 
 
 
@@ -19,7 +19,7 @@ Getting started
 
 (*If you've come here looking to simply run Electrum-PND,* `you may download it here`_.)
 
-.. _you may download it here: https://blackcoin.org/#downloads
+.. _you may download it here: https://pandacoin.org/#downloads
 
 Electrum-PND itself is pure Python, and so are most of the required dependencies,
 but not everything. The following sections describe how to run from source, but here

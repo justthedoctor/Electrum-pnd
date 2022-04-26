@@ -12,7 +12,7 @@ from electrum_blk.simple_config import SimpleConfig
 try:
     addr = sys.argv[1]
 except Exception:
-    print("usage: get_history <blackcoin_address>")
+    print("usage: get_history <pandacoin_address>")
     sys.exit(1)
 
 config = SimpleConfig()

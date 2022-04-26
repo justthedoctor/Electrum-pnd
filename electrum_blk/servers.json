@@ -1,8 +1,7 @@
 {
     "electrum.thepandacoin.net": {
-        "pruning": "-",
-        "s": "50001",
-        "t": "50002",
-        "version": "1.4"
+        "s": "50002",
+        "t": "50001",
+        "version": "1.16"
     }
 }

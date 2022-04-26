@@ -27,7 +27,7 @@ for f in $(ls *.exe); do
       -certs "$CERT_FILE" \
       -key "$KEY_FILE" \
       -n "Electrum-PND" \
-      -i "https://blackcoin.org/" \
+      -i "https://pandacoin.org/" \
       -t "http://timestamp.digicert.com/" \
       -in "$f" \
       -out "../signed/$f"

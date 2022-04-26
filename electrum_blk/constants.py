@@ -69,7 +69,7 @@ class AbstractNet:
         return bytes.fromhex(bitcoin.rev_hex(cls.GENESIS))
 
 
-# Blackcoin
+# Pandacoin
 class BitcoinMainnet(AbstractNet):
 
     NET_NAME = "mainnet"
@@ -85,13 +85,13 @@ class BitcoinMainnet(AbstractNet):
     CHECKPOINTS = read_json('checkpoints.json', {})
     BLOCK_HEIGHT_FIRST_LIGHTNING_CHANNELS = 0
 
-    POW_LIMIT = 0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    POS_LIMIT = 0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-    POS_LIMITV2 = 0x000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffff
-    LAST_POW_BLOCK = 10000
-    FIRST_POSV1RF_BLOCK = 38425
-    FIRST_POSV2_BLOCK = 319002
-    FIRST_POSV3_BLOCK = 872456
+    #POW_LIMIT = 0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    #POS_LIMIT = 0x00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+    #POS_LIMITV2 = 0x000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffff
+    #LAST_POW_BLOCK = 10000
+    #FIRST_POSV1RF_BLOCK = 38425
+    #FIRST_POSV2_BLOCK = 319002
+    #FIRST_POSV3_BLOCK = 872456
 
     XPRV_HEADERS = {
         'standard':    0x0488ade4,  # xprv
@@ -114,7 +114,7 @@ class BitcoinMainnet(AbstractNet):
     LN_DNS_SEEDS = []
 
 
-# Blackcoin
+# Pandacoin
 class BitcoinTestnet(AbstractNet):
 
     NET_NAME = "testnet"
@@ -162,7 +162,7 @@ class BitcoinTestnet(AbstractNet):
     ]
 
 
-# Blackcoin
+# Pandacoin
 class BitcoinRegtest(BitcoinTestnet):
 
     NET_NAME = "regtest"

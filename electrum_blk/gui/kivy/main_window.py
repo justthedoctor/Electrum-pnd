@@ -815,7 +815,7 @@ class ElectrumWindow(App, Logger):
             popup.open()
         elif name == 'lightning_channels_dialog' and not self.wallet.can_have_lightning():
             self.show_error(_("Not available for this wallet.") + "\n\n" +
-                            _("Lightning is currently is not available for Blackcoin."))
+                            _("Lightning is currently is not available for Pandacoin."))
         elif name.endswith("_dialog"):
             getattr(self, name)()
         else:

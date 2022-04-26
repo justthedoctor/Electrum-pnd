@@ -227,7 +227,7 @@ class BaseWizard(Logger):
     def import_addresses_or_keys(self):
         v = lambda x: keystore.is_address_list(x) or keystore.is_private_key_list(x, raise_on_error=True)
         title = _("Import Pandacoin Addresses")
-        message = _("Enter a list of Blackcoin addresses (this will create a watching-only wallet), or a list of private keys.")
+        message = _("Enter a list of Pandacoin addresses (this will create a watching-only wallet), or a list of private keys.")
         self.add_xpub_dialog(title=title, message=message, run_next=self.on_import,
                              is_valid=v, allow_multi=True, show_wif_help=True)
 
@@ -418,7 +418,7 @@ class BaseWizard(Logger):
             # For legacy, this is partially compatible with BIP45; assumes index=0
             # For segwit, a custom path is used, as there is no standard at all.
             default_choice_idx = 2
-            # Blackcoin: no segwit for now
+            # Pandacoin: no segwit for now
             choices = [
                 ('standard',   'legacy multisig (p2sh)',            normalize_bip32_derivation("m/45'/0")),
             ]
@@ -432,7 +432,7 @@ class BaseWizard(Logger):
                 hide_choices = True
         else:
             default_choice_idx = 2
-            # Blackcoin: no segwit for now
+            # Pandacoin: no segwit for now
             choices = [
                 ('standard',    'legacy (p2pkh)',            bip44_derivation(0, bip43_purpose=44)),
             ]
@@ -572,7 +572,7 @@ class BaseWizard(Logger):
         if has_xpub:
             t1 = xpub_type(k.xpub)
         if self.wallet_type == 'standard':
-            # Blackcoin: no segwit for now
+            # Pandacoin: no segwit for now
             if has_xpub and t1 not in ['standard']:
                 self.show_error(_('Wrong key type') + ' %s'%t1)
                 self.run('choose_keystore')
@@ -581,7 +581,7 @@ class BaseWizard(Logger):
             self.run('create_wallet')
         elif self.wallet_type == 'multisig':
             assert has_xpub
-            # Blackcoin: no segwit for now
+            # Pandacoin: no segwit for now
             if t1 not in ['standard', 'p2wsh']:
                 self.show_error(_('Wrong key type') + ' %s'%t1)
                 self.run('choose_keystore')

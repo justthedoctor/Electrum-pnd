@@ -939,7 +939,7 @@ class Transaction:
 
     def is_final(self) -> bool:
         """Whether RBF is disabled."""
-        # Blackcoin: we prefer not to use RBF feature
+        # Pandacoin: we prefer not to use RBF feature
         # return not any([txin.nsequence < 0xffffffff - 1 for txin in self.inputs()])
         return True
 

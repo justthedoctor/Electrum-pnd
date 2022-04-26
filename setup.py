@@ -88,10 +88,10 @@ setup(
     include_package_data=True,
     scripts=['electrum_blk/electrum-blk'],
     data_files=data_files,
-    description="Lightweight Blackcoin Wallet",
+    description="Lightweight Pandacoin Wallet",
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT Licence",
-    url="https://blackcoin.org",
-    long_description="""Lightweight Blackcoin Wallet""",
+    url="https://pandacoin.org",
+    long_description="""Lightweight Pandacoin Wallet""",
 )

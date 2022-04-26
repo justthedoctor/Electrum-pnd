@@ -2,19 +2,19 @@
 # sudo desktop-file-install electrum-blk.desktop
 
 [Desktop Entry]
-Comment=Lightweight Blackcoin Client
+Comment=Lightweight Pandacoin Client
 Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-blk %u"
-GenericName[en_US]=Blackcoin Wallet
-GenericName=Blackcoin Wallet
+GenericName[en_US]=Pandacoin Wallet
+GenericName=Pandacoin Wallet
 Icon=electrum
-Name[en_US]=Electrum Blackcoin Wallet
-Name=Electrum Blackcoin Wallet
+Name[en_US]=Electrum Pandacoin Wallet
+Name=Electrum Pandacoin Wallet
 Categories=Finance;Network;
 StartupNotify=true
 StartupWMClass=electrum-blk
 Terminal=false
 Type=Application
-MimeType=x-scheme-handler/blackcoin;
+MimeType=x-scheme-handler/pandacoin;
 Actions=Testnet;
 
 [Desktop Action Testnet]

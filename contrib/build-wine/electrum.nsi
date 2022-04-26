@@ -132,11 +132,11 @@ Section
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" 0
 
 
-  ;Links blackcoin: URI's to Electrum
-  WriteRegStr HKCU "Software\Classes\blackcoin" "" "URL:blackcoin Protocol"
-  WriteRegStr HKCU "Software\Classes\blackcoin" "URL Protocol" ""
-  WriteRegStr HKCU "Software\Classes\blackcoin" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
-  WriteRegStr HKCU "Software\Classes\blackcoin\shell\open\command" "" "$\"$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe$\" $\"%1$\""
+  ;Links pandacoin: URI's to Electrum
+  WriteRegStr HKCU "Software\Classes\pandacoin" "" "URL:pandacoin Protocol"
+  WriteRegStr HKCU "Software\Classes\pandacoin" "URL Protocol" ""
+  WriteRegStr HKCU "Software\Classes\pandacoin" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
+  WriteRegStr HKCU "Software\Classes\pandacoin\shell\open\command" "" "$\"$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe$\" $\"%1$\""
 
   ;Adds an uninstaller possibility to Windows Uninstall or change a program section
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
@@ -167,7 +167,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\${PRODUCT_NAME}\*.*"
   RMDir  "$SMPROGRAMS\${PRODUCT_NAME}"
 
-  DeleteRegKey HKCU "Software\Classes\blackcoin"
+  DeleteRegKey HKCU "Software\Classes\pandacoin"
   DeleteRegKey HKCU "Software\${PRODUCT_NAME}"
   DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
 SectionEnd

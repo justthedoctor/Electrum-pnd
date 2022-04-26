@@ -303,7 +303,7 @@ class Coinbase(ExchangeBase):
 class CoinGecko(ExchangeBase):
 
     async def get_rates(self, ccy):
-        json = await self.get_json('api.coingecko.com', '/api/v3/coins/blackcoin/market_chart?vs_currency=%s&days=0' % ccy)
+        json = await self.get_json('api.coingecko.com', '/api/v3/coins/pandacoin/market_chart?vs_currency=%s&days=0' % ccy)
         return {ccy: Decimal(json.get("prices", [[0, 0]])[0][1])}
 
     def history_ccys(self):
@@ -312,7 +312,7 @@ class CoinGecko(ExchangeBase):
 
     async def request_history(self, ccy):
         history = await self.get_json('api.coingecko.com',
-                                      '/api/v3/coins/blackcoin/market_chart?vs_currency=%s&days=max' % ccy)
+                                      '/api/v3/coins/pandacoin/market_chart?vs_currency=%s&days=max' % ccy)
 
         return dict([(datetime.utcfromtimestamp(h[0]/1000).strftime('%Y-%m-%d'), h[1])
                      for h in history['prices']])

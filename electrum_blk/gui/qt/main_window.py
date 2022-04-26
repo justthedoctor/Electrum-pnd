@@ -574,8 +574,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         if self.wallet.is_watching_only():
             msg = ' '.join([
                 _("This wallet is watching-only."),
-                _("This means you will not be able to spend blackcoins with it."),
-                _("Make sure you own the seed phrase or the private keys, before you request blackcoins to be sent to this wallet.")
+                _("This means you will not be able to spend pandacoins with it."),
+                _("Make sure you own the seed phrase or the private keys, before you request pandacoins to be sent to this wallet.")
             ])
             self.show_warning(msg, title=_('Watch-only wallet'))
 
@@ -790,7 +790,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         help_menu = menubar.addMenu(_("&Help"))
         help_menu.addAction(_("&About"), self.show_about)
         help_menu.addAction(_("&Check for updates"), self.show_update_check)
-        help_menu.addAction(_("&Official website"), lambda: webopen("https://blackcoin.org"))
+        help_menu.addAction(_("&Official website"), lambda: webopen("https://pandacoin.org"))
         help_menu.addSeparator()
         help_menu.addAction(_("&Documentation"), lambda: webopen("http://docs.electrum.org/")).setShortcut(QKeySequence.HelpContents)
         help_menu.addAction(_("&Report Bug"), self.show_report_bug)
@@ -803,18 +803,18 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         d = self.network.get_donation_address()
         if d:
             host = self.network.get_parameters().server.host
-            self.pay_to_URI('blackcoin:%s?message=donation for %s'%(d, host))
+            self.pay_to_URI('pandacoin:%s?message=donation for %s'%(d, host))
         else:
             self.show_error(_('No donation address for this server'))
 
     def show_about(self):
         QMessageBox.about(self, "Electrum-PND",
                           (_("Version")+" %s" % ELECTRUM_VERSION + "\n\n" +
-                           _("Electrum's focus is speed, with low resource usage and simplifying Blackcoin.") + " " +
+                           _("Electrum's focus is speed, with low resource usage and simplifying Pandacoin.") + " " +
                            _("You do not need to perform regular backups, because your wallet can be "
                               "recovered from a secret phrase that you can memorize or write on paper.") + " " +
                            _("Startup times are instant because it operates in conjunction with high-performance "
-                              "servers that handle the most complicated parts of the Blackcoin system.") + "\n\n" +
+                              "servers that handle the most complicated parts of the Pandacoin system.") + "\n\n" +
                            _("Uses icons from the Icons8 icon pack (icons8.com).")))
 
     def show_update_check(self, version=None):
@@ -894,7 +894,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         return self.config.format_amount(amount_sat, is_diff=is_diff, whitespaces=whitespaces)
 
     def format_amount_and_units(self, amount_sat, *, timestamp: int = None) -> str:
-        """Returns string with both blackcoin and fiat amounts, in desired units.
+        """Returns string with both pandacoin and fiat amounts, in desired units.
         E.g. 500_000 -> '0.005 PND (0.005 EUR)'
         """
         text = self.config.format_amount_and_units(amount_sat)
@@ -1122,8 +1122,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
             _('This information is seen by the recipient if you send them a signed payment request.'),
             '\n\n',
             _('For on-chain requests, the address gets reserved until expiration. After that, it might get reused.'), ' ',
-            _('The blackcoin address never expires and will always be part of this electrum wallet.'), ' ',
-            _('You can reuse a blackcoin address any number of times but it is not good for your privacy.'),
+            _('The pandacoin address never expires and will always be part of this electrum wallet.'), ' ',
+            _('You can reuse a pandacoin address any number of times but it is not good for your privacy.'),
             '\n\n',
             _('For Lightning requests, payments will not be accepted after the expiration.'),
         ])
@@ -1377,9 +1377,9 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.payto_e = PayToEdit(self)
         self.payto_e.addPasteButton(self.app)
         msg = (_("Recipient of the funds.") + "\n\n"
-               + _("You may enter a Blackcoin address, a label from your list of contacts "
+               + _("You may enter a Pandacoin address, a label from your list of contacts "
                    "(a list of completions will be proposed), "
-                   "or an alias (email-like address that forwards to a Blackcoin address)") + ". "
+                   "or an alias (email-like address that forwards to a Pandacoin address)") + ". "
                + _("Lightning invoices are also supported.") + "\n\n"
                + _("You can also pay to many outputs in a single transaction, "
                    "specifying one output per line.") + "\n" + _("Format: address, amount") + "\n"
@@ -1536,7 +1536,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
 
         for o in outputs:
             if o.scriptpubkey is None:
-                self.show_error(_('Blackcoin Address is None'))
+                self.show_error(_('Pandacoin Address is None'))
                 return True
             if o.value is None:
                 self.show_error(_('Invalid Amount'))
@@ -2533,7 +2533,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                 grid.addWidget(button, 5, 3)
             else:
                 grid.addWidget(WWLabel(_("Not available for this wallet.")), 5, 1)
-                grid.addWidget(HelpButton(_("Lightning is currently not available for Blackcoin.")), 5, 2)
+                grid.addWidget(HelpButton(_("Lightning is currently not available for Pandacoin.")), 5, 2)
         vbox.addLayout(grid)
 
         labels_clayout = None
@@ -2680,7 +2680,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         address  = address.text().strip()
         message = message.toPlainText().strip()
         if not bitcoin.is_address(address):
-            self.show_message(_('Invalid Blackcoin address.'))
+            self.show_message(_('Invalid Pandacoin address.'))
             return
         if self.wallet.is_watching_only():
             self.show_message(_('This is a watching-only wallet.'))
@@ -2708,7 +2708,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         address  = address.text().strip()
         message = message.toPlainText().strip().encode('utf-8')
         if not bitcoin.is_address(address):
-            self.show_message(_('Invalid Blackcoin address.'))
+            self.show_message(_('Invalid Pandacoin address.'))
             return
         try:
             # This can throw on invalid base64

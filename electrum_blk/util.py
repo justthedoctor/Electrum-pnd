@@ -82,11 +82,11 @@ def all_subclasses(cls) -> Set:
 ca_path = certifi.where()
 
 
-base_units = {'PND':8, 'mBLK':5, 'μPND':2, 'sat':0}
+base_units = {'PND':6, 'mBLK':5, 'μPND':2, 'sat':0}
 base_units_inverse = inv_dict(base_units)
 base_units_list = ['PND', 'mBLK', 'μPND', 'sat']  # list(dict) does not guarantee order
 
-DECIMAL_POINT_DEFAULT = 8  # PND
+DECIMAL_POINT_DEFAULT = 6  # PND
 
 
 class UnknownBaseUnit(Exception): pass
@@ -652,7 +652,7 @@ def chunks(items, size: int):
 def format_satoshis_plain(
         x: Union[int, float, Decimal, str],  # amount in satoshis,
         *,
-        decimal_point: int = 8,  # how much to shift decimal point to left (default: sat->BTC)
+        decimal_point: int = 6,  # how much to shift decimal point to left (default: sat->BTC)
 ) -> str:
     """Display a satoshi amount scaled.  Always uses a '.' as a decimal
     point and has no thousands separator"""
@@ -677,7 +677,7 @@ def format_satoshis(
         x: Union[int, float, Decimal, str, None],  # amount in satoshis
         *,
         num_zeros: int = 0,
-        decimal_point: int = 8,  # how much to shift decimal point to left (default: sat->BTC)
+        decimal_point: int = 6,  # how much to shift decimal point to left (default: sat->BTC)
         precision: int = 0,  # extra digits after satoshi precision
         is_diff: bool = False,  # if True, enforce a leading sign (+/-)
         whitespaces: bool = False,  # if True, add whitespaces, to align numbers in a column
@@ -799,18 +799,18 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'Bitinfocharts.com': ('https://bitinfocharts.com/blackcoin/',
+    'Bitinfocharts.com': ('https://bitinfocharts.com/pandacoin/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'cryptoID': ('https://chainz.cryptoid.info/blk',
+    'cryptoID': ('https://chainz.cryptoid.info/pnd',
                         {'tx': 'tx.dws?', 'addr': 'address.dws?'}),
-    'system default': ('https://chainz.cryptoid.info/blk',
+    'system default': ('https://chainz.cryptoid.info/pnd',
                         {'tx': 'tx.dws?', 'addr': 'address.dws?'}),
 }
 
 testnet_block_explorers = {
-    'Blackcoin.NL': ('https://explorer.blackcoin.nl/',
+    'Pandacoin.NL': ('https://explorer.pandacoin.nl/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'system default': ('https://explorer.blackcoin.nl/',
+    'system default': ('https://explorer.pandacoin.nl/',
                         {'tx': 'tx/', 'addr': 'address/'}),
 }
 
@@ -879,7 +879,7 @@ def block_explorer_URL(config: 'SimpleConfig', kind: str, item: str) -> Optional
 
 
 # note: when checking against these, use .lower() to support case-insensitivity
-BITCOIN_BIP21_URI_SCHEME = 'blackcoin'
+BITCOIN_BIP21_URI_SCHEME = 'pandacoin'
 LIGHTNING_URI_SCHEME = 'lightning'
 
 
@@ -897,12 +897,12 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
 
     if ':' not in uri:
         if not bitcoin.is_address(uri):
-            raise InvalidBitcoinURI("Not a blackcoin address")
+            raise InvalidBitcoinURI("Not a pandacoin address")
         return {'address': uri}
 
     u = urllib.parse.urlparse(uri)
     if u.scheme.lower() != BITCOIN_BIP21_URI_SCHEME:
-        raise InvalidBitcoinURI("Not a blackcoin URI")
+        raise InvalidBitcoinURI("Not a pandacoin URI")
     address = u.path
 
     # python for android fails to parse query
@@ -919,7 +919,7 @@ def parse_URI(uri: str, on_pr: Callable = None, *, loop=None) -> dict:
     out = {k: v[0] for k, v in pq.items()}
     if address:
         if not bitcoin.is_address(address):
-            raise InvalidBitcoinURI(f"Invalid blackcoin address: {address}")
+            raise InvalidBitcoinURI(f"Invalid pandacoin address: {address}")
         out['address'] = address
     if 'amount' in out:
         am = out['amount']
