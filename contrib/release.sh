@@ -12,7 +12,7 @@
 #
 # env vars:
 # - ELECBUILD_NOCACHE: if set, forces rebuild of docker images
-# - WWW_DIR: path to "electrum-blk-web" git clone
+# - WWW_DIR: path to "electrum-pnd-web" git clone
 #
 # additional env vars for the RELEASEMANAGER:
 # - for signing the version announcement file:
@@ -23,7 +23,7 @@
 #
 # Note: steps before doing a new release:
 # - update locale:
-#     1. cd /opt/electrum-blk-locale && ./update && push
+#     1. cd /opt/electrum-pnd-locale && ./update && push
 #     2. cd to the submodule dir, and git pull
 #     3. cd .. && git push
 # - update RELEASE-NOTES and version.py
@@ -43,7 +43,7 @@ cd "$PROJECT_ROOT"
 # rm -f .buildozer
 
 if [ -z "$WWW_DIR" ] ; then
-    WWW_DIR=/opt/electrum-blk-web
+    WWW_DIR=/opt/electrum-pnd-web
 fi
 
 GPGUSER=$1
@@ -63,7 +63,7 @@ elif [ "$GPGUSER" == "sombernight_releasekey" ]; then
 fi
 
 
-VERSION=`python3 -c "import electrum_blk; print(electrum_blk.version.ELECTRUM_VERSION)"`
+VERSION=`python3 -c "import electrum_pnd; print(electrum_pnd.version.ELECTRUM_VERSION)"`
 info "VERSION: $VERSION"
 REV=`git describe --tags`
 info "REV: $REV"
@@ -89,7 +89,7 @@ else
 fi
 
 # appimage
-appimage="electrum-blk-$REV-x86_64.AppImage"
+appimage="electrum-pnd-$REV-x86_64.AppImage"
 if test -f "dist/$appimage"; then
     info "file exists: $appimage"
 else
@@ -98,9 +98,9 @@ fi
 
 
 # windows
-win1="electrum-blk-$REV.exe"
-win2="electrum-blk-$REV-portable.exe"
-win3="electrum-blk-$REV-setup.exe"
+win1="electrum-pnd-$REV.exe"
+win2="electrum-pnd-$REV-portable.exe"
+win3="electrum-pnd-$REV-setup.exe"
 if test -f "dist/$win1"; then
     info "file exists: $win1"
 else
@@ -135,7 +135,7 @@ fi
 
 # the macos binary is built on a separate machine.
 # the file that needs to be copied over is the codesigned release binary (regardless of builder role)
-dmg=electrum-blk-$VERSION.dmg
+dmg=electrum-pnd-$VERSION.dmg
 if ! test -f "dist/$dmg"; then
     if [ ! -z "$RELEASEMANAGER" ] ; then  # RM
         fail "dmg is missing, aborting. Please build and codesign the dmg on a mac and copy it over."

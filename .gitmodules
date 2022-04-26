@@ -1,9 +1,9 @@
-[submodule "contrib/deterministic-build/electrum-blk-locale"]
-	path = contrib/deterministic-build/electrum-blk-locale
+[submodule "contrib/deterministic-build/electrum-pnd-locale"]
+	path = contrib/deterministic-build/electrum-pnd-locale
 	url = https://github.com/spesmilo/electrum-locale
-[submodule "electrum_blk/www"]
-	path = electrum_blk/www
+[submodule "electrum_pnd/www"]
+	path = electrum_pnd/www
 	url = https://github.com/spesmilo/electrum-http.git
-[submodule "electrum_blk/gui/kivy/theming/atlas"]
-	path = electrum_blk/gui/kivy/theming/atlas
+[submodule "electrum_pnd/gui/kivy/theming/atlas"]
+	path = electrum_pnd/gui/kivy/theming/atlas
 	url = https://github.com/spesmilo/electrum-kivy-atlas

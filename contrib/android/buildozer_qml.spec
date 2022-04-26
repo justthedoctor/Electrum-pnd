@@ -7,7 +7,7 @@ title = Electrum-PND
 package.name = Electrum_BLK
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.electrum_blk
+package.domain = org.electrum_pnd
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -20,9 +20,9 @@ source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
 source.exclude_dirs = bin, build, dist, contrib,
-    electrum_blk/tests,
-    electrum_blk/gui/qt,
-    electrum_blk/gui/kivy,
+    electrum_pnd/tests,
+    electrum_pnd/gui/qt,
+    electrum_pnd/gui/kivy,
     packages/qdarkstyle,
     packages/qtpy
 
@@ -34,7 +34,7 @@ source.exclude_patterns = Makefile,setup*,
 
 # (str) Application versioning (method 1)
 version.regex = APK_VERSION = '(.*)'
-version.filename = %(source.dir)s/electrum_blk/version.py
+version.filename = %(source.dir)s/electrum_pnd/version.py
 
 # (str) Application versioning (method 2)
 #version = 1.9.8
@@ -55,12 +55,12 @@ requirements =
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/gui/kivy/theming/splash.png
-presplash.filename = %(source.dir)s/electrum_blk/gui/icons/electrum_presplash.png
+presplash.filename = %(source.dir)s/electrum_pnd/gui/icons/electrum_presplash.png
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/electrum_blk/gui/icons/android_electrum_icon_legacy.png
-icon.adaptive_foreground.filename = %(source.dir)s/electrum_blk/gui/icons/android_electrum_icon_foreground.png
-icon.adaptive_background.filename = %(source.dir)s/electrum_blk/gui/icons/android_electrum_icon_background.png
+icon.filename = %(source.dir)s/electrum_pnd/gui/icons/android_electrum_icon_legacy.png
+icon.adaptive_foreground.filename = %(source.dir)s/electrum_pnd/gui/icons/android_electrum_icon_foreground.png
+icon.adaptive_background.filename = %(source.dir)s/electrum_pnd/gui/icons/android_electrum_icon_background.png
 
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = portrait
@@ -128,11 +128,11 @@ android.add_jars = .buildozer/android/platform/*/build/libs_collections/Electrum
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
-android.add_src = electrum_blk/gui/kivy/data/java-classes/
+android.add_src = electrum_pnd/gui/kivy/data/java-classes/
 
 android.gradle_dependencies = me.dm7.barcodescanner:zxing:1.9.8
 
-android.add_activities = org.electrum_blk.qr.SimpleScannerActivity
+android.add_activities = org.electrum_pnd.qr.SimpleScannerActivity
 
 # (str) python-for-android branch to use, if not master, useful to try
 # not yet merged features.

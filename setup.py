@@ -26,7 +26,7 @@ with open('contrib/requirements/requirements-hw.txt') as f:
     requirements_hw = f.read().splitlines()
 
 # load version.py; needlessly complicated alternative to "imp.load_source":
-version_spec = importlib.util.spec_from_file_location('version', 'electrum_blk/version.py')
+version_spec = importlib.util.spec_from_file_location('version', 'electrum_pnd/version.py')
 version_module = version = importlib.util.module_from_spec(version_spec)
 version_spec.loader.exec_module(version_module)
 
@@ -46,8 +46,8 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-blk.desktop']),
-        (os.path.join(usr_share, icons_dirname), ['electrum_blk/gui/icons/electrum.png']),
+        (os.path.join(usr_share, 'applications/'), ['electrum-pnd.desktop']),
+        (os.path.join(usr_share, icons_dirname), ['electrum_pnd/gui/icons/electrum.png']),
     ]
 
 extras_require = {
@@ -71,22 +71,22 @@ setup(
     install_requires=requirements,
     extras_require=extras_require,
     packages=[
-        'electrum_blk',
-        'electrum_blk.qrreader',
-        'electrum_blk.gui',
-        'electrum_blk.gui.qt',
-        'electrum_blk.gui.qt.qrreader',
-        'electrum_blk.gui.qt.qrreader.qtmultimedia',
-        'electrum_blk.plugins',
-    ] + [('electrum_blk.plugins.'+pkg) for pkg in find_packages('electrum_blk/plugins')],
+        'electrum_pnd',
+        'electrum_pnd.qrreader',
+        'electrum_pnd.gui',
+        'electrum_pnd.gui.qt',
+        'electrum_pnd.gui.qt.qrreader',
+        'electrum_pnd.gui.qt.qrreader.qtmultimedia',
+        'electrum_pnd.plugins',
+    ] + [('electrum_pnd.plugins.'+pkg) for pkg in find_packages('electrum_pnd/plugins')],
     package_dir={
-        'electrum_blk': 'electrum_blk'
+        'electrum_pnd': 'electrum_pnd'
     },
     # Note: MANIFEST.in lists what gets included in the tar.gz, and the
     # package_data kwarg lists what gets put in site-packages when pip installing the tar.gz.
     # By specifying include_package_data=True, MANIFEST.in becomes responsible for both.
     include_package_data=True,
-    scripts=['electrum_blk/electrum-blk'],
+    scripts=['electrum_pnd/electrum-pnd'],
     data_files=data_files,
     description="Lightweight Pandacoin Wallet",
     author="Thomas Voegtlin",

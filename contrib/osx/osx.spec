@@ -5,7 +5,7 @@ from PyInstaller.utils.hooks import collect_data_files, collect_submodules, coll
 import sys, os
 
 PACKAGE='Electrum-PND'
-PYPKG='electrum_blk'
+PYPKG='electrum_pnd'
 MAIN_SCRIPT='run_electrum'
 ICONS_FILE=PYPKG + '/gui/icons/electrum.icns'
 
@@ -58,23 +58,23 @@ binaries += [b for b in collect_dynamic_libs('PyQt5') if 'macstyle' in b[0]]
 
 # We don't put these files in to actually include them in the script but to make the Analysis method scan them for imports
 a = Analysis([electrum+ MAIN_SCRIPT,
-              electrum+'electrum_blk/gui/qt/main_window.py',
-              electrum+'electrum_blk/gui/qt/qrreader/qtmultimedia/camera_dialog.py',
-              electrum+'electrum_blk/gui/text.py',
-              electrum+'electrum_blk/util.py',
-              electrum+'electrum_blk/wallet.py',
-              electrum+'electrum_blk/simple_config.py',
-              electrum+'electrum_blk/bitcoin.py',
-              electrum+'electrum_blk/dnssec.py',
-              electrum+'electrum_blk/commands.py',
-              electrum+'electrum_blk/plugins/cosigner_pool/qt.py',
-              electrum+'electrum_blk/plugins/email_requests/qt.py',
-              electrum+'electrum_blk/plugins/trezor/qt.py',
-              electrum+'electrum_blk/plugins/safe_t/client.py',
-              electrum+'electrum_blk/plugins/safe_t/qt.py',
-              electrum+'electrum_blk/plugins/keepkey/qt.py',
-              electrum+'electrum_blk/plugins/ledger/qt.py',
-              electrum+'electrum_blk/plugins/coldcard/qt.py',
+              electrum+'electrum_pnd/gui/qt/main_window.py',
+              electrum+'electrum_pnd/gui/qt/qrreader/qtmultimedia/camera_dialog.py',
+              electrum+'electrum_pnd/gui/text.py',
+              electrum+'electrum_pnd/util.py',
+              electrum+'electrum_pnd/wallet.py',
+              electrum+'electrum_pnd/simple_config.py',
+              electrum+'electrum_pnd/bitcoin.py',
+              electrum+'electrum_pnd/dnssec.py',
+              electrum+'electrum_pnd/commands.py',
+              electrum+'electrum_pnd/plugins/cosigner_pool/qt.py',
+              electrum+'electrum_pnd/plugins/email_requests/qt.py',
+              electrum+'electrum_pnd/plugins/trezor/qt.py',
+              electrum+'electrum_pnd/plugins/safe_t/client.py',
+              electrum+'electrum_pnd/plugins/safe_t/qt.py',
+              electrum+'electrum_pnd/plugins/keepkey/qt.py',
+              electrum+'electrum_pnd/plugins/ledger/qt.py',
+              electrum+'electrum_pnd/plugins/coldcard/qt.py',
               ],
              binaries=binaries,
              datas=datas,

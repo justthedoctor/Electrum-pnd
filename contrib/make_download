@@ -6,7 +6,7 @@ import importlib
 from collections import defaultdict
 
 # load version.py; needlessly complicated alternative to "imp.load_source":
-version_spec = importlib.util.spec_from_file_location('version', 'electrum_blk/version.py')
+version_spec = importlib.util.spec_from_file_location('version', 'electrum_pnd/version.py')
 version_module = importlib.util.module_from_spec(version_spec)
 version_spec.loader.exec_module(version_module)
 
@@ -33,11 +33,11 @@ string = string.replace("##VERSION_APK##", APK_VERSION)
 
 files = {
     'tgz': "Electrum-PND-%s.tar.gz" % version,
-    'appimage': "electrum-blk-%s-x86_64.AppImage" % version,
-    'mac': "electrum-blk-%s.dmg" % version_mac,
-    'win': "electrum-blk-%s.exe" % version_win,
-    'win_setup': "electrum-blk-%s-setup.exe" % version_win,
-    'win_portable': "electrum-blk-%s-portable.exe" % version_win,
+    'appimage': "electrum-pnd-%s-x86_64.AppImage" % version,
+    'mac': "electrum-pnd-%s.dmg" % version_mac,
+    'win': "electrum-pnd-%s.exe" % version_win,
+    'win_setup': "electrum-pnd-%s-setup.exe" % version_win,
+    'win_portable': "electrum-pnd-%s-portable.exe" % version_win,
     'apk_arm64': "Electrum-PND-%s-arm64-v8a-release.apk" % APK_VERSION,
     'apk_armeabi': "Electrum-PND-%s-armeabi-v7a-release.apk" % APK_VERSION,
 }

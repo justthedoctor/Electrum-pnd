@@ -6,7 +6,7 @@ build/
 dist/
 *.egg/
 Electrum_BLK.egg-info/
-electrum_blk/locale/
+electrum_pnd/locale/
 .devlocaltmp/
 *_trial_temp
 packages
@@ -19,7 +19,7 @@ bin/
 .idea
 .mypy_cache
 .vscode
-electrum-blk_data
+electrum-pnd_data
 .DS_Store
 
 # tests/tox
@@ -49,8 +49,8 @@ contrib/libusb/
 contrib/.venv_make_packages/
 
 # shared objects
-electrum_blk/*.so
-electrum_blk/*.so.0
-electrum_blk/*.dll
-electrum_blk/*.dylib
+electrum_pnd/*.so
+electrum_pnd/*.so.0
+electrum_pnd/*.dll
+electrum_pnd/*.dylib
 contrib/osx/*.dylib

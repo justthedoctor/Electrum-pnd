@@ -36,8 +36,8 @@ Before starting, you should install `brew`.
 - We recommend creating a VM with a macOS guest, e.g. using VirtualBox,
   and building there.
 - The guest should run macOS 10.14.6 (that specific version).
-- The unix username should be `vagrant`, and `electrum-blk` should be cloned directly
-  to the user's home dir: `/Users/vagrant/electrum-blk`.
+- The unix username should be `vagrant`, and `electrum-pnd` should be cloned directly
+  to the user's home dir: `/Users/vagrant/electrum-pnd`.
 - Builders need to use the same version of Xcode; and note that
   full Xcode and Xcode commandline tools differ!
   - Xcode CLI tools are sufficient for everything, except it is missing `altool`,
@@ -54,7 +54,7 @@ Before starting, you should install `brew`.
     $ xcrun --show-sdk-path
     /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
     ```
-- Make sure that you are building from a fresh clone of electrum-blk
+- Make sure that you are building from a fresh clone of electrum-pnd
   (or run e.g. `git clean -ffxd` to rm all local changes).
 
 
@@ -85,7 +85,7 @@ Make sure it is the "selected" xcode (e.g.):
 
 #### 2. Build Electrum-PND
 
-    cd electrum-blk
+    cd electrum-pnd
     ./contrib/osx/make_osx
 
 This creates both a folder named Electrum-PND.app and the .dmg file.

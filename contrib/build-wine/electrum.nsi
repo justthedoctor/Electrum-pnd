@@ -7,7 +7,7 @@
 ;Variables
 
   !define PRODUCT_NAME "Electrum-PND"
-  !define PRODUCT_WEB_SITE "https://github.com/CoinBlack/electrum-blk"
+  !define PRODUCT_WEB_SITE "https://github.com/CoinBlack/electrum-pnd"
   !define PRODUCT_PUBLISHER "Electrum Technologies GmbH"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
@@ -16,7 +16,7 @@
 
   ;Name and file
   Name "${PRODUCT_NAME}"
-  OutFile "dist/electrum-blk-setup.exe"
+  OutFile "dist/electrum-pnd-setup.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
@@ -72,7 +72,7 @@
   !define MUI_ABORTWARNING
   !define MUI_ABORTWARNING_TEXT "Are you sure you wish to abort the installation of ${PRODUCT_NAME}?"
 
-  !define MUI_ICON "c:\electrum-blk\electrum_blk\gui\icons\electrum.ico"
+  !define MUI_ICON "c:\electrum-pnd\electrum_pnd\gui\icons\electrum.ico"
 
 ;--------------------------------
 ;Pages
@@ -110,8 +110,8 @@ Section
   Delete "$SMPROGRAMS\${PRODUCT_NAME}\*.*"
 
   ;Files to pack into the installer
-  File /r "dist\electrum-blk\*.*"
-  File "c:\electrum-blk\electrum_blk\gui\icons\electrum.ico"
+  File /r "dist\electrum-pnd\*.*"
+  File "c:\electrum-pnd\electrum_pnd\gui\icons\electrum.ico"
 
   ;Store installation folder
   WriteRegStr HKCU "Software\${PRODUCT_NAME}" "" $INSTDIR
@@ -122,21 +122,21 @@ Section
 
   ;Create desktop shortcut
   DetailPrint "Creating desktop shortcut..."
-  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" ""
+  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-pnd-${PRODUCT_VERSION}.exe" ""
 
   ;Create start-menu items
   DetailPrint "Creating start-menu items..."
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" "" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" 0
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe" 0
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-pnd-${PRODUCT_VERSION}.exe" "" "$INSTDIR\electrum-pnd-${PRODUCT_VERSION}.exe" 0
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\electrum-pnd-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\electrum-pnd-${PRODUCT_VERSION}.exe" 0
 
 
   ;Links pandacoin: URI's to Electrum
   WriteRegStr HKCU "Software\Classes\pandacoin" "" "URL:pandacoin Protocol"
   WriteRegStr HKCU "Software\Classes\pandacoin" "URL Protocol" ""
   WriteRegStr HKCU "Software\Classes\pandacoin" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
-  WriteRegStr HKCU "Software\Classes\pandacoin\shell\open\command" "" "$\"$INSTDIR\electrum-blk-${PRODUCT_VERSION}.exe$\" $\"%1$\""
+  WriteRegStr HKCU "Software\Classes\pandacoin\shell\open\command" "" "$\"$INSTDIR\electrum-pnd-${PRODUCT_VERSION}.exe$\" $\"%1$\""
 
   ;Adds an uninstaller possibility to Windows Uninstall or change a program section
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"

@@ -1,6 +1,6 @@
 include LICENCE RELEASE-NOTES AUTHORS
 include README.rst
-include electrum-blk.desktop
+include electrum-pnd.desktop
 include *.py
 include run_electrum
 recursive-include packages *.py
@@ -11,14 +11,14 @@ include contrib/deterministic-build/requirements*.txt
 include contrib/make_libsecp256k1.sh
 include contrib/build_tools_util.sh
 
-graft electrum_blk
-prune electrum_blk/tests
+graft electrum_pnd
+prune electrum_pnd/tests
 graft contrib/udev
 
-exclude electrum_blk/*.so
-exclude electrum_blk/*.so.0
-exclude electrum_blk/*.dll
-exclude electrum_blk/*.dylib
+exclude electrum_pnd/*.so
+exclude electrum_pnd/*.so.0
+exclude electrum_pnd/*.dll
+exclude electrum_pnd/*.dylib
 
 global-exclude __pycache__
 global-exclude *.py[co~]
@@ -28,4 +28,4 @@ global-exclude .git
 
 # Maybe we should exclude the compiled locale files? see https://askubuntu.com/a/144139
 # We include both source (.po) and compiled (.mo) locale files atm (if present).
-# exclude electrum_blk/locale/*/LC_MESSAGES/electrum.mo
+# exclude electrum_pnd/locale/*/LC_MESSAGES/electrum.mo

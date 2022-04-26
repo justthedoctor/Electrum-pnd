@@ -4,9 +4,9 @@ set -e
 
 # Parameterize
 PYTHON_VERSION=3.9.12
-BUILDDIR=/tmp/electrum-blk-build
+BUILDDIR=/tmp/electrum-pnd-build
 PACKAGE=Electrum-PND
-GIT_REPO=https://github.com/CoinBlack/electrum-blk
+GIT_REPO=https://github.com/CoinBlack/electrum-pnd
 
 export GCC_STRIP_BINARIES="1"
 export PYTHONDONTWRITEBYTECODE=1  # don't create __pycache__/ folders with .pyc files
@@ -160,40 +160,40 @@ info "generating locale"
         brew install gettext
         brew link --force gettext
     fi
-    cd "$CONTRIB"/deterministic-build/electrum-blk-locale
+    cd "$CONTRIB"/deterministic-build/electrum-pnd-locale
     # we want the binary to have only compiled (.mo) locale files; not source (.po) files
-    rm -rf "$PROJECT_ROOT/electrum_blk/locale/"
+    rm -rf "$PROJECT_ROOT/electrum_pnd/locale/"
     for i in ./locale/*; do
-        dir="$PROJECT_ROOT/electrum_blk/$i/LC_MESSAGES"
+        dir="$PROJECT_ROOT/electrum_pnd/$i/LC_MESSAGES"
         mkdir -p "$dir"
         msgfmt --output-file="$dir/electrum.mo" "$i/electrum.po" || true
     done
 ) || fail "failed generating locale"
 
 
-if [ ! -f "$PROJECT_ROOT"/electrum_blk/libsecp256k1.0.dylib ]; then
+if [ ! -f "$PROJECT_ROOT"/electrum_pnd/libsecp256k1.0.dylib ]; then
     info "Building libsecp256k1 dylib..."
     "$CONTRIB"/make_libsecp256k1.sh || fail "Could not build libsecp"
 else
     info "Skipping libsecp256k1 build: reusing already built dylib."
 fi
-cp "$PROJECT_ROOT"/electrum_blk/libsecp256k1.0.dylib "$CONTRIB"/osx
+cp "$PROJECT_ROOT"/electrum_pnd/libsecp256k1.0.dylib "$CONTRIB"/osx
 
-if [ ! -f "$PROJECT_ROOT"/electrum_blk/libzbar.0.dylib ]; then
+if [ ! -f "$PROJECT_ROOT"/electrum_pnd/libzbar.0.dylib ]; then
     info "Building ZBar dylib..."
     "$CONTRIB"/make_zbar.sh || fail "Could not build ZBar dylib"
 else
     info "Skipping ZBar build: reusing already built dylib."
 fi
-cp "$PROJECT_ROOT"/electrum_blk/libzbar.0.dylib "$CONTRIB"/osx
+cp "$PROJECT_ROOT"/electrum_pnd/libzbar.0.dylib "$CONTRIB"/osx
 
-if [ ! -f "$PROJECT_ROOT"/electrum_blk/libusb-1.0.dylib ]; then
+if [ ! -f "$PROJECT_ROOT"/electrum_pnd/libusb-1.0.dylib ]; then
     info "Building libusb dylib..."
     "$CONTRIB"/make_libusb.sh || fail "Could not build libusb dylib"
 else
     info "Skipping libusb build: reusing already built dylib."
 fi
-cp "$PROJECT_ROOT"/electrum_blk/libusb-1.0.dylib "$CONTRIB"/osx
+cp "$PROJECT_ROOT"/electrum_pnd/libusb-1.0.dylib "$CONTRIB"/osx
 
 
 info "Installing requirements..."
@@ -244,9 +244,9 @@ DoCodeSignMaybe "app bundle" "dist/${PACKAGE}.app"
 #fi
 
 info "Creating .DMG"
-hdiutil create -fs HFS+ -volname $PACKAGE -srcfolder dist/$PACKAGE.app dist/electrum-blk-$VERSION.dmg || fail "Could not create .DMG"
+hdiutil create -fs HFS+ -volname $PACKAGE -srcfolder dist/$PACKAGE.app dist/electrum-pnd-$VERSION.dmg || fail "Could not create .DMG"
 
-DoCodeSignMaybe ".DMG" "dist/electrum-blk-${VERSION}.dmg"
+DoCodeSignMaybe ".DMG" "dist/electrum-pnd-${VERSION}.dmg"
 
 if [ -z "$CODESIGN_CERT" ]; then
     warn "App was built successfully but was not code signed. Users may get security warnings from macOS."

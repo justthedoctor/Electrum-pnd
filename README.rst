@@ -76,7 +76,7 @@ You can also install Electrum-PND on your system, by running this command::
 
 This will download and install the Python dependencies used by
 Electrum-PND instead of using the 'packages' directory.
-It will also place an executable named :code:`electrum-blk` in :code:`~/.local/bin`,
+It will also place an executable named :code:`electrum-pnd` in :code:`~/.local/bin`,
 so make sure that is on your :code:`PATH` variable.
 
 
@@ -85,8 +85,8 @@ Development version (git clone)
 
 Check out the code from GitHub::
 
-    git clone git://github.com/CoinBlack/electrum-blk.git
-    cd electrum-blk
+    git clone git://github.com/CoinBlack/electrum-pnd.git
+    cd electrum-pnd
     git submodule update --init
 
 Run install (this should install dependencies)::
@@ -105,11 +105,11 @@ Finally, to start Electrum::
 
 Run unit tests with `pytest`:
 
-    pytest electrum_blk/tests -v
+    pytest electrum_pnd/tests -v
 
 To run a single file, specify it directly like this:
 
-    pytest electrum_blk/tests/test_bitcoin.py -v
+    pytest electrum_pnd/tests/test_bitcoin.py -v
 
 Creating Binaries
 =================

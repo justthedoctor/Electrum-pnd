@@ -46,7 +46,7 @@ is_android = 'ANDROID_DATA' in os.environ
 is_appimage = 'APPIMAGE' in os.environ
 # is_local: unpacked tar.gz but not pip installed, or git clone
 is_local = (not is_pyinstaller and not is_android and not is_appimage
-            and os.path.exists(os.path.join(script_dir, "electrum-blk.desktop")))
+            and os.path.exists(os.path.join(script_dir, "electrum-pnd.desktop")))
 is_git_clone = is_local and os.path.exists(os.path.join(script_dir, ".git"))
 
 if is_git_clone:
@@ -84,25 +84,25 @@ if not is_android:
 
 sys._ELECTRUM_RUNNING_VIA_RUNELECTRUM = True  # used by logging.py
 
-from electrum_blk.logging import get_logger, configure_logging  # import logging submodule first
-from electrum_blk import util
-from electrum_blk import constants
-from electrum_blk import SimpleConfig
-from electrum_blk.wallet_db import WalletDB
-from electrum_blk.wallet import Wallet
-from electrum_blk.storage import WalletStorage
-from electrum_blk.util import print_msg, print_stderr, json_encode, json_decode, UserCancelled
-from electrum_blk.util import InvalidPassword, BITCOIN_BIP21_URI_SCHEME, LIGHTNING_URI_SCHEME
-from electrum_blk.commands import get_parser, known_commands, Commands, config_variables
-from electrum_blk import daemon
-from electrum_blk import keystore
-from electrum_blk.util import create_and_start_event_loop
-from electrum_blk.i18n import set_language
+from electrum_pnd.logging import get_logger, configure_logging  # import logging submodule first
+from electrum_pnd import util
+from electrum_pnd import constants
+from electrum_pnd import SimpleConfig
+from electrum_pnd.wallet_db import WalletDB
+from electrum_pnd.wallet import Wallet
+from electrum_pnd.storage import WalletStorage
+from electrum_pnd.util import print_msg, print_stderr, json_encode, json_decode, UserCancelled
+from electrum_pnd.util import InvalidPassword, BITCOIN_BIP21_URI_SCHEME, LIGHTNING_URI_SCHEME
+from electrum_pnd.commands import get_parser, known_commands, Commands, config_variables
+from electrum_pnd import daemon
+from electrum_pnd import keystore
+from electrum_pnd.util import create_and_start_event_loop
+from electrum_pnd.i18n import set_language
 
 if TYPE_CHECKING:
     import threading
 
-    from electrum_blk.plugin import Plugins
+    from electrum_pnd.plugin import Plugins
 
 _logger = get_logger(__name__)
 
@@ -135,7 +135,7 @@ def init_cmdline(config_options, wallet_path, server, *, config: 'SimpleConfig')
 
     if cmd.requires_wallet and not storage.file_exists():
         print_msg("Error: Wallet file not found.")
-        print_msg("Type 'electrum-blk create' to create a new wallet, or provide a path to a wallet with the -w option")
+        print_msg("Type 'electrum-pnd create' to create a new wallet, or provide a path to a wallet with the -w option")
         sys_exit(1)
 
     # important warning
@@ -259,7 +259,7 @@ async def run_offline_command(config, config_options, plugins: 'Plugins'):
 
 
 def init_plugins(config, gui_name):
-    from electrum_blk.plugin import Plugins
+    from electrum_pnd.plugin import Plugins
     return Plugins(config, gui_name)
 
 
@@ -317,7 +317,7 @@ def main():
     # config is an object passed to the various constructors (wallet, interface, gui)
     if is_android:
         from jnius import autoclass
-        build_config = autoclass("org.electrum_blk.electrum_blk.BuildConfig")
+        build_config = autoclass("org.electrum_pnd.electrum_pnd.BuildConfig")
         config_options = {
             'verbosity': '*' if build_config.DEBUG else '',
             'cmd': 'gui',
@@ -340,7 +340,7 @@ def main():
     if config_options.get('portable'):
         if is_local:
             # running from git clone or local source: put datadir next to main script
-            datadir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'electrum-blk_data')
+            datadir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'electrum-pnd_data')
         else:
             # Running a binary or installed source. The most generic but still reasonable thing
             # is to use the current working directory. (see #7732)
@@ -348,7 +348,7 @@ def main():
             #       and we don't want to put the datadir inside a temp dir.
             # note: Re the portable .exe on Windows, when the user double-clicks it, CWD gets set
             #       to the parent dir, i.e. we will put the datadir next to the exe.
-            datadir = os.path.join(os.path.realpath(cwd), 'electrum-blk_data')
+            datadir = os.path.join(os.path.realpath(cwd), 'electrum-pnd_data')
         config_options['electrum_path'] = datadir
 
     if not config_options.get('verbosity'):
@@ -457,7 +457,7 @@ def handle_cmd(*, cmdname: str, config: 'SimpleConfig', config_options: dict):
             try:
                 result = daemon.request(config, 'run_cmdline', (config_options,), timeout)
             except daemon.DaemonNotRunning:
-                print_msg("Daemon not running; try 'electrum-blk daemon -d'")
+                print_msg("Daemon not running; try 'electrum-pnd daemon -d'")
                 if not cmd.requires_network:
                     print_msg("To run this command without a daemon, use --offline")
                 sys_exit(1)

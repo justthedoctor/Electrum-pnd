@@ -31,8 +31,8 @@ task:
     fingerprint_script: echo $ELECTRUM_IMAGE && cat $ELECTRUM_REQUIREMENTS_CI && cat $ELECTRUM_REQUIREMENTS
     populate_script: mkdir -p ~/.cache/pip
   electrum_cache:
-    folder: /tmp/electrum-blk-build
-    populate_script: mkdir -p /tmp/electrum-blk-build
+    folder: /tmp/electrum-pnd-build
+    populate_script: mkdir -p /tmp/electrum-pnd-build
   version_script:
     - $ELECTRUM_PYTHON_NAME --version
   tag_script:
@@ -68,8 +68,8 @@ task:
     fingerprint_script: echo Locale && echo $ELECTRUM_IMAGE && cat $ELECTRUM_REQUIREMENTS_CI
     populate_script: mkdir -p ~/.cache/pip
   electrum_cache:
-    folder: /tmp/electrum-blk-build
-    populate_script: mkdir -p /tmp/electrum-blk-build
+    folder: /tmp/electrum-pnd-build
+    populate_script: mkdir -p /tmp/electrum-pnd-build
   install_script:
     - apt-get update
     - apt-get -y install libsecp256k1-0 gettext
@@ -98,8 +98,8 @@ task:
     fingerprint_script: echo Regtest && echo docker_builder && cat $ELECTRUM_REQUIREMENTS
     populate_script: mkdir -p ~/.cache/pip
   electrum_cache:
-    folder: /tmp/electrum-blk-build
-    populate_script: mkdir -p /tmp/electrum-blk-build
+    folder: /tmp/electrum-pnd-build
+    populate_script: mkdir -p /tmp/electrum-pnd-build
   bitcoind_cache:
     folder: /tmp/blackmored
     populate_script: mkdir -p /tmp/blackmored
@@ -116,12 +116,12 @@ task:
     - tar -xaf $BITCOIND_PATH || (rm -f /tmp/blackmored/* && curl --output $BITCOIND_PATH $BITCOIND_URL && tar -xaf $BITCOIND_PATH)
     - cp -a pandacoin-more-$BITCOIND_VERSION/* /usr/
   bitcoind_service_background_script:
-    - electrum_blk/tests/regtest/run_bitcoind.sh
+    - electrum_pnd/tests/regtest/run_bitcoind.sh
   electrumx_service_background_script:
-    - electrum_blk/tests/regtest/run_electrumx.sh
+    - electrum_pnd/tests/regtest/run_electrumx.sh
   regtest_script:
     - sleep 10s
-    - python3 -m unittest electrum_blk/tests/regtest.py
+    - python3 -m unittest electrum_pnd/tests/regtest.py
   env:
     ELECTRUM_REQUIREMENTS: contrib/requirements/requirements.txt
     # ElectrumX exits with an error without this:
@@ -137,8 +137,8 @@ task:
     fingerprint_script: echo Flake8 && echo $ELECTRUM_IMAGE && cat $ELECTRUM_REQUIREMENTS
     populate_script: mkdir -p ~/.cache/pip
   electrum_cache:
-    folder: /tmp/electrum-blk-build
-    populate_script: mkdir -p /tmp/electrum-blk-build
+    folder: /tmp/electrum-pnd-build
+    populate_script: mkdir -p /tmp/electrum-pnd-build
   install_script:
     - pip install flake8
   flake8_script:
@@ -167,7 +167,7 @@ task:
   binaries_artifacts:
     path: "contrib/build-wine/dist/*"
   env:
-    CIRRUS_WORKING_DIR: /opt/wine64/drive_c/electrum-blk
+    CIRRUS_WORKING_DIR: /opt/wine64/drive_c/electrum-pnd
 
 task:
   name: Android build

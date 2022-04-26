@@ -51,7 +51,7 @@ certificate/key) and one or multiple trusted verifiers:
 
 | Signer and verifiers:                                                                            |
 |--------------------------------------------------------------------------------------------------|
-| Upload signatures to 'electrum-blk-signatures' repo, as `$version/$filename.$builder.asc`            |
+| Upload signatures to 'electrum-pnd-signatures' repo, as `$version/$filename.$builder.asc`            |
 
 
 
