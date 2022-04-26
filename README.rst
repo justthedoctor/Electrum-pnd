@@ -7,7 +7,7 @@ Electrum-PND - Lightweight Pandacoin client
   Original Author: Thomas Voegtlin
   PND Port Maintainer: lateminer
   Language: Python (>= 3.8)
-  Homepage: https://pandacoin.org/
+  Homepage: https://pandacoin.tech/
 
 
 
@@ -19,7 +19,7 @@ Getting started
 
 (*If you've come here looking to simply run Electrum-PND,* `you may download it here`_.)
 
-.. _you may download it here: https://pandacoin.org/#downloads
+.. _you may download it here: https://pandacoin.tech/wallet
 
 Electrum-PND itself is pure Python, and so are most of the required dependencies,
 but not everything. The following sections describe how to run from source, but here

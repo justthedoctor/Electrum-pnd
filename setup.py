@@ -92,6 +92,6 @@ setup(
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT Licence",
-    url="https://pandacoin.org",
+    url="https://pandacoin.tech",
     long_description="""Lightweight Pandacoin Wallet""",
 )
