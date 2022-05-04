@@ -54,3 +54,8 @@ electrum_pnd/*.so.0
 electrum_pnd/*.dll
 electrum_pnd/*.dylib
 contrib/osx/*.dylib
+Electrum_PND.egg-info/dependency_links.txt
+Electrum_PND.egg-info/PKG-INFO
+Electrum_PND.egg-info/requires.txt
+Electrum_PND.egg-info/SOURCES.txt
+Electrum_PND.egg-info/top_level.txt

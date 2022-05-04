@@ -731,8 +731,8 @@ class Interface(Logger):
             header = blockchain.deserialize_header(bfh(raw_header['hex']), height)
             self.tip_header = header
             self.tip = height
-            if self.tip < constants.net.max_checkpoint():
-                raise GracefulDisconnect('server tip below max checkpoint')
+            #if self.tip < constants.net.max_checkpoint():
+            #    raise GracefulDisconnect('server tip below max checkpoint')
             self._mark_ready()
             await self._process_header_at_tip()
             # header processing done
